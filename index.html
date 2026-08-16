@@ -20,6 +20,8 @@
     </div>
 
     <div class="topbar__actions">
+      <span id="usuario" class="usuario" hidden></span>
+      <button id="btn-sair" class="btn btn--ghost btn--pequeno" type="button" hidden>Sair</button>
       <button id="btn-tema" class="btn btn--ghost" type="button" title="Alternar tema">
         <span id="btn-tema-icone">🌙</span>
       </button>
@@ -39,6 +41,29 @@
   </header>
 
   <main class="conteudo">
+    <!-- Aviso do modo local (config.js ainda sem as chaves do Supabase) -->
+    <section id="banner-local" class="banner" hidden>
+      <div>
+        <strong>Modo local:</strong> estas cobranças ficam salvas só neste navegador.
+        Quem abrir o site em outro aparelho verá a agenda vazia.
+        Para compartilhar a mesma agenda, configure o banco de dados
+        (instruções em <code>assets/js/config.js</code>).
+      </div>
+      <button type="button" class="btn btn--pequeno btn--ghost" data-fechar-banner>Entendi</button>
+    </section>
+
+    <!-- Oferta de migração dos dados locais para a nuvem -->
+    <section id="banner-migrar" class="banner banner--acao" hidden>
+      <div>
+        <strong>Encontramos <span id="migrar-qtd">0</span> cobrança(s) salvas só neste navegador.</strong>
+        Quer enviá-las para a agenda compartilhada? Sua colega passa a enxergá-las também.
+      </div>
+      <div class="banner__botoes">
+        <button type="button" id="btn-migrar" class="btn btn--primario btn--pequeno">Enviar para a nuvem</button>
+        <button type="button" class="btn btn--pequeno btn--ghost" data-fechar-banner>Agora não</button>
+      </div>
+    </section>
+
     <!-- Indicadores -->
     <section class="kpis" aria-label="Resumo do mês">
       <article class="kpi">
@@ -111,6 +136,39 @@
       <div id="lista" class="lista"></div>
     </section>
   </main>
+
+  <!-- Tela de login (só aparece no modo nuvem) -->
+  <div id="tela-login" class="login" hidden>
+    <div class="login__caixa">
+      <div class="login__marca">
+        <span aria-hidden="true">📅</span>
+        <h2>Agenda de Cobranças</h2>
+        <p id="login-subtitulo">Entre para ver a agenda compartilhada.</p>
+      </div>
+
+      <form id="form-login" class="form" novalidate>
+        <label class="form__campo">
+          <span>E-mail</span>
+          <input id="l-email" class="campo" type="email" autocomplete="email" required placeholder="voce@email.com" />
+        </label>
+
+        <label class="form__campo">
+          <span>Senha</span>
+          <input id="l-senha" class="campo" type="password" autocomplete="current-password" required minlength="6" placeholder="mínimo de 6 caracteres" />
+        </label>
+
+        <p id="login-erro" class="form__erro" hidden></p>
+        <p id="login-aviso" class="form__aviso" hidden></p>
+
+        <button type="submit" id="login-enviar" class="btn btn--primario">Entrar</button>
+
+        <div class="login__links">
+          <button type="button" id="login-alternar" class="link">Não tenho conta ainda</button>
+          <button type="button" id="login-esqueci" class="link">Esqueci minha senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Modal de cadastro/edição -->
   <div id="modal" class="modal" hidden>

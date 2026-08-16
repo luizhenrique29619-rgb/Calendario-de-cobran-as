@@ -438,6 +438,87 @@ html[data-tema="escuro"] .dia--hoje .dia__numero { color: #0b1120; }
   border-radius: var(--raio-pequeno);
 }
 
+/* ---------------------------------------------------------------- login   */
+.login {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--fundo);
+  overflow-y: auto;
+}
+.login__caixa {
+  width: min(400px, 100%);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+.login__marca {
+  padding: 26px 20px 4px;
+  text-align: center;
+}
+.login__marca span { font-size: 34px; }
+.login__marca h2 { margin-top: 6px; font-size: 19px; }
+.login__marca p { margin: 6px 0 0; font-size: 13.5px; color: var(--texto-fraco); }
+
+.login__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  padding-top: 2px;
+}
+.link {
+  padding: 0;
+  font: inherit;
+  font-size: 13px;
+  color: var(--primaria);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form__aviso {
+  margin: 0;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: var(--ok);
+  background: var(--ok-suave);
+  border-radius: var(--raio-pequeno);
+}
+
+.usuario {
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--texto-fraco);
+}
+
+/* --------------------------------------------------------------- banners  */
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  background: var(--aviso-suave);
+  color: var(--aviso);
+  border: 1px solid currentColor;
+  border-radius: var(--raio-pequeno);
+}
+.banner--acao { background: var(--primaria-suave); color: var(--primaria); }
+.banner code { font-size: 12.5px; }
+.banner__botoes { display: flex; gap: 6px; }
+
 /* ---------------------------------------------------------------- toast   */
 .toast {
   position: fixed;
@@ -454,6 +535,16 @@ html[data-tema="escuro"] .dia--hoje .dia__numero { color: #0b1120; }
   box-shadow: var(--sombra);
 }
 html[data-tema="escuro"] .toast { background: #e5e7eb; color: #0b1120; }
+
+/* Erros ficam mais tempo na tela e precisam se distinguir de um "salvo!". */
+.toast--erro,
+html[data-tema="escuro"] .toast--erro {
+  max-width: min(460px, calc(100vw - 32px));
+  padding: 11px 18px;
+  color: #fff;
+  background: #b91c1c;
+  border-radius: var(--raio-pequeno);
+}
 
 /* ---------------------------------------------------------------- mobile  */
 @media (max-width: 780px) {
