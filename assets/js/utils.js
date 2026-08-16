@@ -29,9 +29,10 @@ export function formatarData(iso) {
   return paraData(iso).toLocaleDateString('pt-BR');
 }
 
-/** "agosto de 2026" */
+/** "Agosto de 2026" — só a primeira letra em maiúscula. */
 export function nomeMes(data) {
-  return data.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  const texto = data.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
 
 /** Diferença em dias entre duas datas ISO (b - a). */

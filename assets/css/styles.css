@@ -197,7 +197,7 @@ html[data-tema="escuro"] .btn--primario { color: #0b1120; }
   margin-bottom: 16px;
 }
 .barra__mes { display: flex; align-items: center; gap: 6px; }
-.barra__mes h2 { min-width: 190px; text-align: center; font-size: 17px; text-transform: capitalize; }
+.barra__mes h2 { min-width: 190px; text-align: center; font-size: 17px; }
 .barra__filtros { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 
 .campo {
@@ -466,6 +466,12 @@ html[data-tema="escuro"] .toast { background: #e5e7eb; color: #0b1120; }
   .barra__filtros { display: grid; grid-template-columns: 1fr 1fr; }
   .abas { grid-column: 1 / -1; }
   .aba { flex: 1; }
+
+  /* Dois cartões por linha para o calendário caber sem tanto rolamento. */
+  .kpis { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .kpi { padding: 12px; }
+  .kpi__rotulo { font-size: 11px; }
+  .kpi__valor { font-size: 20px; }
 
   .dia { min-height: 74px; padding: 5px; }
   .dia__total { display: none; }
